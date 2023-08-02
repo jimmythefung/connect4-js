@@ -1,5 +1,45 @@
 .game {
     background-color: turquoise;
-    font-weight: bold;
-    border: 2px solid black;
+    width: fit-content;
+    margin: auto;
+}
+
+.game-div {
+    border: 4px solid purple;
+    margin-bottom: 2rem;
+    /* width: fit-content; */
+    /* margin: auto; */
+}
+
+.board {
+    display: flex;
+}
+
+.row {
+    display: block;
+    border: 1px solid red;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid pink;
+}
+
+.column:hover {
+    background-color: antiquewhite;
+}
+
+.cell {
+    height: 4rem;
+    width: 4rem;
+    border: 1px solid black;
+    display: inline-block;
+    text-align: center;
+    line-height: 4rem;
+}
+
+.cell:hover {
+    font-weight: bolder;
+    border: solid red 4px;
 }
