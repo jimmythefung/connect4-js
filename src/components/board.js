@@ -14,7 +14,7 @@ export default function Board({ current_board, onCellClick }) {
             a_column.push(
                 <Cell
                     key={index}
-                    text={current_board[r][c] + ": " + index}
+                    text={current_board[r][c]}
                     row={r}
                     col={c}
                     clickHandler={onCellClick}
@@ -36,8 +36,7 @@ function Cell({ text, row, col, clickHandler }) {
     return (
         <div
             className={`${styles.cell}`}
-            onClick={() => console.log("Clicked " + text)}
-            onMouseEnter={() => clickHandler(row, col)}
+            onClick={() => clickHandler(row, col)}
         >
             {text}
         </div>

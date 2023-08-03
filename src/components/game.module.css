@@ -27,7 +27,7 @@
 }
 
 .column:hover {
-    background-color: antiquewhite;
+    border: solid 4px yellowgreen;
 }
 
 .cell {
