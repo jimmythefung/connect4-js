@@ -43,3 +43,11 @@
     font-weight: bolder;
     border: solid red 4px;
 }
+
+.player1 {
+    background-color: red;
+}
+
+.player2 {
+    background-color: green;
+}

@@ -1,6 +1,6 @@
 import styles from "./game.module.css";
 import Board from "./board";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Game() {
     const [col_select, setColSelect] = useState(0);
@@ -14,15 +14,11 @@ export default function Game() {
     const [turn, setTurn] = useState(PLAYER2);
     const is_p1_turn = turn === PLAYER1;
 
-    let sleep = (ms) => {
-        return new Promise((resolve) => setTimeout(resolve, ms));
-    };
-
-    async function handleCellClick(row, column) {
+    function handleCellClick(row, column) {
         // meta
         setColSelect(column);
         console.log("Cell " + [row, column] + " clicked.");
-        
+
         // Drop the token to the bottom at the given column
         // Note: slice is neccessary to trigger react to refresh/update the board
         let newBoard = currentBoard.slice();
@@ -50,12 +46,15 @@ export default function Game() {
         //         setCurrentBoard(newBoard);
 
         //         // Clear the animation
-        //         if (r > 0) {
-        //             newBoard[r - 1][column] = BLANK;
-        //             setCurrentBoard(newBoard);
-        //         }
+        //         useEffect(() => {
+        //             setTimeout(() => {
+        //                 if (r > 0) {
+        //                     newBoard[r - 1][column] = BLANK;
+        //                     setCurrentBoard(newBoard);
+        //                 }
+        //             }, 500);
+        //         }, [currentBoard]);
         //     }
-        //     await sleep(1000);
         // }
         // setTurn(is_p1_turn ? PLAYER2 : PLAYER1);
     }

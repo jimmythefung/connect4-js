@@ -35,7 +35,11 @@ export default function Board({ current_board, onCellClick }) {
 function Cell({ text, row, col, clickHandler }) {
     return (
         <div
-            className={`${styles.cell}`}
+            className={`
+                ${styles.cell} 
+                ${text === "X" ? styles.player1 : ""}
+                ${text === "O" ? styles.player2 : ""}
+            `}
             onClick={() => clickHandler(row, col)}
         >
             {text}
