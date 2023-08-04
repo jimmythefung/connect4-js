@@ -5,3 +5,58 @@
 html {
     background-color: grey;
 }
+
+.navbar {
+    border: solid 2px black;
+    padding: 1rem;
+    background-color: lightgreen;
+    width: 100%;
+}
+
+/* Left navigation bar */
+.navbar-left {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.navbar-left__brand {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: blue;
+}
+
+/* Right navigation bar */
+.navbar-right {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+    width: calc(100% - 82px);
+}
+
+.navbar-right__items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.navbar-right__item {
+    display: inline-block;
+}
+
+.navbar-right__item a {
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: blue;
+    margin: 0 2px;
+}
+
+.navbar-right__item a:hover {
+    color: white;
+    background-color: lightseagreen;
+}
+
+.navbar-right__item a:active {
+    color: white;
+    background-color: lightseagreen;
+}

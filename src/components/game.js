@@ -1,5 +1,6 @@
 import styles from "./game.module.css";
 import Board from "./board";
+import Layout from './Layout';
 import { useEffect, useState } from "react";
 
 export default function Game() {
@@ -149,7 +150,7 @@ export default function Game() {
     }
 
     return (
-        <>
+        <Layout>
             <div className={`${styles.game}`}>
                 <div className={`${styles["game-div"]}`}>Connect 4 Game!</div>
                 <div className={`${styles["game-div"]}`}>
@@ -162,6 +163,6 @@ export default function Game() {
                     Select column: {col_select}
                 </div>
             </div>
-        </>
+        </Layout>
     );
 }
