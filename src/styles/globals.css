@@ -166,3 +166,7 @@ html {
     background: red;
     border-color: red;
 }
+
+.open {
+    display: block !important;
+}
