@@ -1,18 +1,20 @@
 .game {
     background-color: turquoise;
-    width: fit-content;
-    margin: auto;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
 }
 
 .game-div {
     border: 4px solid purple;
     margin-bottom: 2rem;
-    /* width: fit-content; */
-    /* margin: auto; */
+    text-align: center;
 }
 
 .board {
     display: flex;
+    width: fit-content;
+    margin: auto;
 }
 
 .row {
@@ -35,8 +37,21 @@
     width: 3rem;
     border: 1px solid black;
     display: inline-block;
-    text-align: center;
-    line-height: 4rem;
+}
+
+
+@media (min-width: 40rem) {
+    .cell {
+        height: 5rem;
+        width: 5rem;
+    }
+}
+
+@media (min-width: 60rem) {
+    .cell {
+        height: 7rem;
+        width: 7rem;
+    }
 }
 
 .cell:hover {

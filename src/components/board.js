@@ -42,7 +42,8 @@ function Cell({ text, row, col, clickHandler }) {
             `}
             onClick={() => clickHandler(row, col)}
         >
-            {text}
+            {/* Don't care about player symbol. Cell color suffice. */}
+            {/* {text} */}
         </div>
     );
 }
