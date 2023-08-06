@@ -22,7 +22,7 @@ html {
 .navbar-left__brand {
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.3rem;
+    font-size: 1rem;
     color: blue;
 }
 
@@ -31,7 +31,7 @@ html {
     display: inline-block;
     vertical-align: middle;
     text-align: right;
-    width: calc(100% - 54px);
+    width: calc(100% - 100px);
 }
 
 .navbar-right__items {
@@ -44,8 +44,9 @@ html {
     display: inline-block;
 }
 
-.navbar-right__item a {
-    font-size: 1.3rem;
+.navbar-right__item a,
+.mobile-nav__item a {
+    font-size: 1rem;
     text-decoration: none;
     color: blue;
     margin: 0 0.3rem;
@@ -59,6 +60,56 @@ html {
 .navbar-right__item a:active {
     color: white;
     background-color: lightseagreen;
+}
+
+/* Mobile nav */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    background: white;
+    width: fit-content;
+    height: 100vh;
+}
+
+.mobile-nav__items {
+    width: fit-content;
+    height: 100%;
+    list-style: none;
+    margin: 10% auto;
+    padding: 0;
+    text-align: left;
+}
+
+.mobile-nav__item {
+    margin: 1rem 1rem;
+}
+
+.mobile-nav__item a {
+    font-size: 1.5rem;
+}
+
+/* Mobile hamberger toggle button */
+.toggle-button {
+    width: 3rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding-top: 0;
+    padding-bottom: 0;
+    vertical-align: middle;
+}
+.toggle-button:focus {
+    outline: none;
+}
+.toggle-button__bar {
+    width: 100%;
+    height: 0.3rem;
+    background: black;
+    display: block;
+    margin: 0.3rem 0;
 }
 
 /* Modal */
