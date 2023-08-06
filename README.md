@@ -1,6 +1,14 @@
 # connect4-js
 Connect4 implemented on nextjs, with mobile-first design approach.  
 
+## To Do  
+ - [ ] Modal for winner
+ - [ ] Responsive screen + hamberger menu
+ - [ ] Left menu
+ - [ ] TicTacToe page
+ - [ ] User login + authentication
+
+
 ## Getting Started
 Install node modules dependencies:
 ```bash

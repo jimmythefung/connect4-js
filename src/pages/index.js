@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Game from "../components/game";
-
+import Script from "next/script";
 
 export default function Home() {
     return (
@@ -13,6 +13,11 @@ export default function Home() {
                     content="width=device-width, initial-scale=1"
                 />
                 <link rel="icon" href="/favicon.ico" />
+                <Script
+                    src="/shared.js"
+                    strategy="lazyOnload"
+                    onLoad={() => console.log(`Loaded shared.js`)}
+                />
             </Head>
             <main>
                 <Game />

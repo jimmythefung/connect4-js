@@ -1,7 +1,8 @@
 import styles from "./game.module.css";
 import Board from "./board";
-import Layout from './Layout';
+import Layout from "./Layout";
 import { useEffect, useState } from "react";
+import * as utils from "./utils.js";
 
 export default function Game() {
     const [col_select, setColSelect] = useState(0);
@@ -19,8 +20,7 @@ export default function Game() {
     useEffect(() => {
         let symbol = turn == PLAYER1 ? PLAYER2 : PLAYER1;
         if (check_winner(currentBoard, symbol)) {
-            console.log("We have a winner!");
-            alert(symbol + " is the winner!");
+            utils.openModal();
         }
     }, [currentBoard]);
 

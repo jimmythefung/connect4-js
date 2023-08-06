@@ -10,13 +10,13 @@ export default function Navbar() {
                 <div className="navbar-right">
                     <ul className="navbar-right__items">
                         <li className="navbar-right__item">
-                            <Link href="/connectfour">Connect 4</Link>
+                            <Link href="/">Connect 4</Link>
                         </li>
                         <li className="navbar-right__item">
-                            <Link href="/contact">Contact</Link>
+                            <Link href="/">Contact</Link>
                         </li>
                         <li className="navbar-right__item">
-                            <Link href="/about">About</Link>
+                            <Link href="/">About</Link>
                         </li>
                     </ul>
                 </div>
