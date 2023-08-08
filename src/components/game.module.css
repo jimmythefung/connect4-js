@@ -15,6 +15,8 @@
     display: flex;
     width: fit-content;
     margin: auto;
+    border: solid 5px blue;
+    border-top: none;
 }
 
 .row {
@@ -25,8 +27,8 @@
 .column {
     display: flex;
     flex-direction: column;
-    border: 1px solid pink;
-    background-color: hsl(240, 53%, 53%);
+    /* border: 1px solid pink; */
+    background-color: lightblue;
 }
 
 .column:hover {
@@ -36,10 +38,15 @@
 .cell {
     height: 3rem;
     width: 3rem;
-    border: 1px solid black;
+    border: solid 1px blue;
     border-radius: 50%;
     background-color: lightyellow;
     display: inline-block;
+}
+
+.cell:hover {
+    font-weight: bolder;
+    /* border: solid red 4px; */
 }
 
 @media (min-width: 40rem) {
@@ -54,11 +61,6 @@
         height: 7rem;
         width: 7rem;
     }
-}
-
-.cell:hover {
-    font-weight: bolder;
-    border: solid red 4px;
 }
 
 .player1 {
