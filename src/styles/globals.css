@@ -3,7 +3,8 @@
 }
 
 html {
-    background-color: grey;
+    background-color: gray;
+    height: 100vh;
 }
 
 body {
@@ -13,7 +14,7 @@ body {
 .navbar {
     border: solid 2px black;
     padding: 0.5rem 0.2rem;
-    background-color: lightgreen;
+    background-color: black;
     width: 100%;
 }
 
@@ -27,7 +28,7 @@ body {
     text-decoration: none;
     font-weight: bold;
     font-size: 1rem;
-    color: blue;
+    color: white;
 }
 
 /* Right navigation bar */
@@ -52,18 +53,17 @@ body {
 .mobile-nav__item a {
     font-size: 1rem;
     text-decoration: none;
-    color: blue;
+    color: white;
     margin: 0 0.3rem;
 }
 
-.navbar-right__item a:hover {
-    color: white;
-    background-color: lightseagreen;
+.navbar-right__item a:hover,
+.navbar-left__brand:hover {
+    color: lightblue;
 }
 
 .navbar-right__item a:active {
-    color: white;
-    background-color: lightseagreen;
+    color: lightblue;
 }
 
 /* Mobile nav */
@@ -73,8 +73,9 @@ body {
     z-index: 101;
     top: 0;
     left: 0;
-    background: white;
-    width: fit-content;
+    background: black;
+    border: solid 2px white;
+    width: 40%;
     height: 100vh;
 }
 
@@ -95,6 +96,10 @@ body {
     font-size: 1.5rem;
 }
 
+.mobile-nav__item a:hover {
+    color: #ccc;
+}
+
 /* Mobile hamberger toggle button */
 .toggle-button {
     width: 3rem;
@@ -111,7 +116,7 @@ body {
 .toggle-button__bar {
     width: 100%;
     height: 0.3rem;
-    background: black;
+    background: white;
     display: block;
     margin: 0.3rem 0;
 }
@@ -132,9 +137,9 @@ body {
     position: fixed;
     display: none;
     z-index: 200;
-    top: 20%;
-    left: 30%;
-    width: 40%;
+    top: 1%;
+    left: 15%;
+    width: 70%;
     background: white;
     padding: 1rem;
     border: 1px solid #ccc;
@@ -166,11 +171,38 @@ body {
     border-color: #2ddf5c;
 }
 
-.modal__action--negative {
+.modal__action--continue {
     background: red;
     border-color: red;
 }
 
 .open {
     display: block !important;
+}
+
+/* Footer */
+.footer {
+    display: block;
+    background-color: black;
+    padding: 1rem;
+}
+.footer__items {
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.footer__item {
+    display: inline-block;
+}
+.footer__item a {
+    font-size: 1rem;
+    text-decoration: none;
+    color: white;
+    margin: 0 1rem;
+}
+
+.footer__item a:hover,
+.footer__item a:active {
+    color: #ccc;
 }

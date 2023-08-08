@@ -2,12 +2,18 @@
 Connect4 implemented on nextjs, with mobile-first design approach.  
 
 ## To Do  
- - [ ] Modal for winner
- - [ ] Responsive screen + hamberger menu
- - [ ] Left menu
- - [ ] TicTacToe page
+ - [x] Modal for winner
+ - [x] Responsive screen + hamberger menu
+ - [x] Left menu
+ - [X] Beautify winner modal pop up
+ - [X] Footer
+ - [ ] Flex for the nav bar
+ - [ ] Add AI
  - [ ] User login + authentication
 
+### Deployment
+ - [ ] TicTacToe page using nextjs routing
+- [ ] Deploy with nextjs or rbpi
 
 ## Getting Started
 Install node modules dependencies:

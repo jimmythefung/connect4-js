@@ -152,7 +152,9 @@ export default function Game() {
     return (
         <Layout>
             <div className={`${styles.game}`}>
-                <div className={`${styles["game-div"]}`}>Connect 4 Game!</div>
+                <div className={`${styles["game-div"]}`}>
+                    <h1>Connect 4 Game!</h1>
+                </div>
                 <div className={`${styles["game-div"]}`}>
                     <Board
                         current_board={currentBoard}
@@ -160,7 +162,7 @@ export default function Game() {
                     />
                 </div>
                 <div className={`${styles["game-div"]}`}>
-                    Select column: {col_select}
+                    <h2>Select column: {col_select}</h2>
                 </div>
             </div>
         </Layout>
