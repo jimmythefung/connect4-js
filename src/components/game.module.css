@@ -1,8 +1,8 @@
 .game {
     background-color: gray;
-    width: 100vw;
+    /* width: 100vw;
     min-height: calc(100vh - 20vh);
-    margin: 0;
+    margin: 0; */
 }
 
 .game-div {
@@ -27,12 +27,11 @@
 .column {
     display: flex;
     flex-direction: column;
-    /* border: 1px solid pink; */
     background-color: lightblue;
 }
 
 .column:hover {
-    border: solid 4px yellowgreen;
+    border: solid 4px blue;
 }
 
 .cell {
@@ -44,12 +43,7 @@
     display: inline-block;
 }
 
-.cell:hover {
-    font-weight: bolder;
-    /* border: solid red 4px; */
-}
-
-@media (min-width: 40rem) {
+/* @media (min-width: 40rem) {
     .cell {
         height: 5rem;
         width: 5rem;
@@ -61,7 +55,7 @@
         height: 7rem;
         width: 7rem;
     }
-}
+} */
 
 .player1 {
     background-color: red;

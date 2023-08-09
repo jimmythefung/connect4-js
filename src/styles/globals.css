@@ -2,123 +2,17 @@
     box-sizing: border-box;
 }
 
-html {
-    background-color: gray;
-    height: 100vh;
-}
-
 body {
     margin: 0;
 }
 
-.navbar {
-    border: solid 2px black;
-    padding: 0.5rem 0.2rem;
-    background-color: black;
-    width: 100%;
-}
-
-/* Left navigation bar */
-.navbar-left {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.navbar-left__brand {
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1rem;
-    color: white;
-}
-
-/* Right navigation bar */
-.navbar-right {
-    display: inline-block;
-    vertical-align: middle;
-    text-align: right;
-    width: calc(100% - 100px);
-}
-
-.navbar-right__items {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.navbar-right__item {
-    display: inline-block;
-}
-
-.navbar-right__item a,
-.mobile-nav__item a {
-    font-size: 1rem;
-    text-decoration: none;
-    color: white;
-    margin: 0 0.3rem;
-}
-
-.navbar-right__item a:hover,
-.navbar-left__brand:hover {
-    color: lightblue;
-}
-
-.navbar-right__item a:active {
-    color: lightblue;
-}
-
-/* Mobile nav */
-.mobile-nav {
-    display: none;
-    position: fixed;
-    z-index: 101;
-    top: 0;
-    left: 0;
-    background: black;
-    border: solid 2px white;
-    width: 40%;
+/* Layout */
+.layout {
+    display: flex;
+    flex-direction: column;
     height: 100vh;
-}
-
-.mobile-nav__items {
-    width: fit-content;
-    height: 100%;
-    list-style: none;
-    margin: 10% auto;
-    padding: 0;
-    text-align: left;
-}
-
-.mobile-nav__item {
-    margin: 1rem 1rem;
-}
-
-.mobile-nav__item a {
-    font-size: 1.5rem;
-}
-
-.mobile-nav__item a:hover {
-    color: #ccc;
-}
-
-/* Mobile hamberger toggle button */
-.toggle-button {
-    width: 3rem;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding-top: 0;
-    padding-bottom: 0;
-    vertical-align: middle;
-}
-.toggle-button:focus {
-    outline: none;
-}
-.toggle-button__bar {
-    width: 100%;
-    height: 0.3rem;
-    background: white;
-    display: block;
-    margin: 0.3rem 0;
+    justify-content: space-between;
+    background-color: gray;
 }
 
 /* Modal */

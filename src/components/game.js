@@ -3,13 +3,13 @@ import Board from "./board";
 import Layout from "./Layout";
 import { useEffect, useState } from "react";
 import * as utils from "./utils.js";
+let PLAYER1 = "RED";
+let PLAYER2 = "GREEN";
 
 export default function Game() {
     const [col_select, setColSelect] = useState(0);
     let [m, n] = [6, 7];
     let BLANK = "";
-    let PLAYER1 = "X";
-    let PLAYER2 = "O";
 
     let empty_board = Array.from(Array(m), () => new Array(n).fill(BLANK));
     const [currentBoard, setCurrentBoard] = useState(empty_board);
@@ -153,7 +153,7 @@ export default function Game() {
         <Layout>
             <div className={`${styles.game}`}>
                 <div className={`${styles["game-div"]}`}>
-                    <h1>Connect 4 Game!</h1>
+                    <h1>Connect 4</h1>
                 </div>
                 <div className={`${styles["game-div"]}`}>
                     <Board
@@ -162,7 +162,7 @@ export default function Game() {
                     />
                 </div>
                 <div className={`${styles["game-div"]}`}>
-                    <h2>Select column: {col_select}</h2>
+                    <h2>Player Turn: {turn}</h2>
                 </div>
             </div>
         </Layout>

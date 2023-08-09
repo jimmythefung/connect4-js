@@ -1,4 +1,6 @@
 import styles from "./game.module.css";
+let PLAYER1 = "RED";
+let PLAYER2 = "GREEN";
 
 export default function Board({ current_board, onCellClick }) {
     let m_rows = current_board.length;
@@ -37,13 +39,11 @@ function Cell({ text, row, col, clickHandler }) {
         <div
             className={`
                 ${styles.cell} 
-                ${text === "X" ? styles.player1 : ""}
-                ${text === "O" ? styles.player2 : ""}
+                ${text === PLAYER1? styles.player1 : ""}
+                ${text === PLAYER2? styles.player2 : ""}
             `}
             onClick={() => clickHandler(row, col)}
         >
-            {/* Don't care about player symbol. Cell color suffice. */}
-            {/* {text} */}
         </div>
     );
 }
