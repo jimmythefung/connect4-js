@@ -164,6 +164,14 @@ export default function Game() {
                 <div className={`${styles["game-div"]}`}>
                     <h2>Player Turn: {turn}</h2>
                 </div>
+                <div className={`${styles["game-div"]}`}>
+                    <audio autoplay loop controls>
+                        <source
+                            src="/ebi_tempura.mp3"
+                            type="audio/mpeg"
+                        ></source>
+                    </audio>
+                </div>
             </div>
         </Layout>
     );

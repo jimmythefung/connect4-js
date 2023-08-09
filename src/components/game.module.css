@@ -30,12 +30,19 @@
 }
 
 .cell {
-    height: 3rem;
-    width: 3rem;
+    height: calc(100vw/7.5);
+    width: calc(100vw/7.5);
     border: solid 1px blue;
     border-radius: 50%;
     background-color: lightyellow;
     display: inline-block;
+}
+
+@media (min-width: 40rem) {
+    .cell {
+        height: min(calc(100vh/10), calc(100vw/7.5));
+        width: min(calc(100vh/10), calc(100vw/7.5));
+    }
 }
 
 .player1 {
