@@ -7,12 +7,13 @@ Connect4 implemented on nextjs, with mobile-first design approach.
  - [x] Left menu
  - [X] Beautify winner modal pop up
  - [X] Footer
- - [ ] Flex for the nav bar
+ - [X] Flex for the nav bar
  - [ ] Add AI
  - [ ] User login + authentication
+ - [ ] Two players UI
 
 ### Deployment
- - [ ] TicTacToe page using nextjs routing
+- [ ] TicTacToe page using nextjs routing
 - [ ] Deploy with nextjs or rbpi
 
 ## Getting Started

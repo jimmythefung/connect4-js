@@ -21,7 +21,7 @@ export default function Home() {
                 />
             </Head>
             <main>
-                <Game />
+                <Game m={6} n={7} />
             </main>
         </>
     );
