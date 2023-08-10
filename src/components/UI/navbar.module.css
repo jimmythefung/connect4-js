@@ -9,6 +9,7 @@
     position: fixed;
     width: 100vw;
     top: 0;
+    z-index: 200;
 }
 
 
@@ -70,7 +71,7 @@
     position: fixed;
     width: fit-content;
     height: 100vh;
-    z-index: 101;
+    z-index: inherit;
     top: 0;
     left: 0;
     background: black;
@@ -86,4 +87,8 @@
     margin: 0;
     padding: 0.5rem 1rem;
     border-bottom: solid 1px white;
+}
+.mobile-nav__item a:hover {
+    color: #ccc;
+    text-decoration: underline;
 }

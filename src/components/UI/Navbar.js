@@ -23,7 +23,9 @@ export default function Navbar() {
                 {/*  Horizonal header navigation bar */}
                 <div className={`${styles["navbar-left"]}`}>
                     {/* Mobile screen - Hamberger menu*/}
-                    <button className={`toggle-button ${styles["toggle-button"]}`}>
+                    <button
+                        className={`toggle-button ${styles["toggle-button"]}`}
+                    >
                         <span
                             className={`${styles["toggle-button__bar"]}`}
                         ></span>
@@ -58,7 +60,6 @@ export default function Navbar() {
                     </ul>
                 </div>
             </div>
-            {/* <Script src="/shared.js" /> */}
         </>
     );
 }

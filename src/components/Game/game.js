@@ -1,12 +1,12 @@
 import styles from "./game.module.css";
-import Layout from "./Layout";
+import Layout from "../UI/Layout";
 import { useEffect, useState } from "react";
-import * as utils from "./utils.js";
+import * as utils from "../scripts/utils.js";
 let PLAYER1 = "RED";
 let PLAYER2 = "GREEN";
 
-export default function Game({m, n}) {
-    const [currentBoard, setCurrentBoard] = useState(create_board(m,n));
+export default function Game({ m, n }) {
+    const [currentBoard, setCurrentBoard] = useState(create_board(m, n));
     const [col_select, setColSelect] = useState(0);
     const [turn, setTurn] = useState(PLAYER2);
     const is_p1_turn = turn === PLAYER1;
@@ -18,8 +18,6 @@ export default function Game({m, n}) {
             utils.openModal();
         }
     }, [currentBoard]);
-
-    // Helpers
 
     function handleCellClick(row, column) {
         // meta
@@ -47,14 +45,32 @@ export default function Game({m, n}) {
                 <div className={`${styles["game-div"]}`}>
                     <h2>Player Turn: {turn}</h2>
                 </div>
-                <div className={`${styles["game-div"]}`}>
+                {/* <div className={`${styles["game-div"]}`}>
                     <audio autoplay loop controls>
                         <source
                             src="/ebi_tempura.mp3"
                             type="audio/mpeg"
                         ></source>
                     </audio>
+                </div> */}
+
+                {/* Not displayed by default */}
+                <div className="backdrop"></div>
+                <div className="modal">
+                    <h1 className="modal__title">Game!</h1>
+                    <div className="modal__actions">
+                        <a href="/" className="modal__action">
+                            New game
+                        </a>
+                        <button
+                            className="modal__action modal__action--continue"
+                            type="button"
+                        >
+                            Continue
+                        </button>
+                    </div>
                 </div>
+
             </div>
         </Layout>
     );

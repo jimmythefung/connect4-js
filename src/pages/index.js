@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Game from "../components/game";
+import Game from "../components/Game/game";
 import Script from "next/script";
 
 export default function Home() {
@@ -14,11 +14,6 @@ export default function Home() {
                     user-scalable="yes"
                 />
                 <link rel="icon" href="/favicon.ico" />
-                <Script
-                    src="/shared.js"
-                    strategy="lazyOnload"
-                    onLoad={() => console.log(`Loaded shared.js`)}
-                />
             </Head>
             <main>
                 <Game m={6} n={7} />
