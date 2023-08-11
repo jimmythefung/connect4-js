@@ -1,6 +1,5 @@
 import Head from "next/head";
-import Game from "../components/Game/game";
-import Script from "next/script";
+import Connect4 from "../components/Game/Connect4/Connect4";
 
 export default function Home() {
     return (
@@ -16,7 +15,7 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main>
-                <Game m={6} n={7} />
+                <Connect4 m={6} n={7} />
             </main>
         </>
     );
