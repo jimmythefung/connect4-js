@@ -4,53 +4,49 @@ import { useEffect, useState } from "react";
 import * as utils from "../../scripts/utils.js";
 import * as rules from "../../scripts/c4rules.js";
 
-let PLAYER1 = "1";
+let PLAYER1 = "User";
 let PLAYER2 = "AI";
 
 export default function Connect4({ m, n }) {
     const [currentBoard, setCurrentBoard] = useState(rules.create_board(m, n));
     const [col_select, setColSelect] = useState(0);
-    const [turn, setTurn] = useState(PLAYER1);
-    const [isGameOver, setIsGameOver] = useState(false);
-    const is_p1_turn = turn === PLAYER1;
+    const [currentPlayer, setCurrentPlayer] = useState(PLAYER1);
+    let otherPlayer = get_other_player();
+    let isGameOver = rules.check_winner(currentBoard);
 
-    console.log("Is game over? " + isGameOver);
-    if (is_p1_turn) {
-        handle_p1();
+    // Check winner
+    if (isGameOver) {
+        utils.openModal("Victory: "+otherPlayer);
     } else {
-        handle_ai();
-    }
-
-    // Check winner on board re-render
-    useEffect(() => {
-        let symbol = turn == PLAYER1 ? PLAYER2 : PLAYER1;
-        if (rules.check_winner(currentBoard, symbol)) {
-            setIsGameOver(true);
-            utils.openModal();
-            // console.log("Is game over? " + isGameOver);
+        // Game continues
+        if (currentPlayer === PLAYER1) {
+            handle_p1();
+        } else {
+            handle_ai();
         }
-    }, [currentBoard]);
+    }
 
     function handleCellClick(row, column) {
         if (!isGameOver) {
             setColSelect(column);
-            place_token_and_process_turn(column);
+            place_token_and_end_turn(column);
         }
     }
 
-    function place_token_and_process_turn(column) {
-        let symbol = is_p1_turn ? PLAYER1 : PLAYER2;
+    function place_token_and_end_turn(column) {
         let newBoard = currentBoard.slice();
-        if (rules.place_token(column, newBoard, symbol)) {
-            setTurn(is_p1_turn ? PLAYER2 : PLAYER1);
+        if (rules.place_token(column, newBoard, currentPlayer)) {
+            console.log(currentPlayer + " placed column: " + column);
             setCurrentBoard(newBoard);
+
+            // End turn
+            setCurrentPlayer(otherPlayer);
             return true;
         }
         return false;
     }
 
     function handle_p1() {
-        console.log("P1 turn.");
         if (typeof window !== "undefined") {
             var backdrop = document.querySelector(".backdrop");
             backdrop.style.display = "none";
@@ -58,26 +54,27 @@ export default function Connect4({ m, n }) {
     }
 
     function handle_ai() {
-        console.log("AI turn.");
         if (typeof window !== "undefined") {
             var backdrop = document.querySelector(".backdrop");
             backdrop.style.display = "block";
         }
         setTimeout(() => {
-            // AI picks a random column (integer) between 0 to 6 inclusive:
-            let placed = false;
-            while (!placed) {
-                let column = Math.floor(Math.random() * 7);
-                placed = place_token_and_process_turn(column);
-            }
+            let column = rules.get_ai_move(currentBoard, currentPlayer);
+            place_token_and_end_turn(column);
         }, 1000);
+    }
+
+    function get_other_player() {
+        return currentPlayer === PLAYER1 ? PLAYER2 : PLAYER1;
     }
 
     return (
         <Layout>
             <div className={`${styles.game}`}>
                 <div className={`${styles["game-div"]}`}>
-                    <h1>Connect 4</h1>
+                    <h1>
+                        <a href="/">Connect 4</a>
+                    </h1>
                 </div>
 
                 <div className={`${styles["game-div"]}`}>
@@ -88,7 +85,7 @@ export default function Connect4({ m, n }) {
                 </div>
 
                 <div className={`${styles["game-div"]}`}>
-                    <h2>Player Turn: {turn}</h2>
+                    <h2>Player Turn: {currentPlayer}</h2>
                 </div>
 
                 <div className={`${styles["game-div"]}`}>
@@ -117,7 +114,6 @@ export default function Connect4({ m, n }) {
                         </button>
                     </div>
                 </div>
-
             </div>
         </Layout>
     );

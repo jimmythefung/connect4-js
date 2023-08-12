@@ -20,8 +20,8 @@
     display: none;
     z-index: 200;
     top: 1%;
-    left: 15%;
-    width: 70%;
+    left: 41%;
+    width: fit-content;
     background: white;
     padding: 1rem;
     border: 1px solid #ccc;
