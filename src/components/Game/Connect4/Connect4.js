@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import * as utils from "../../scripts/utils.js";
 import * as rules from "../../scripts/c4rules.js";
 
-
 export default function Connect4({ m, n }) {
     const [currentBoard, setCurrentBoard] = useState(rules.create_board(m, n));
     const [col_select, setColSelect] = useState(0);
@@ -14,7 +13,9 @@ export default function Connect4({ m, n }) {
 
     // Check winner
     if (isGameOver) {
-        utils.openModal("Victory: " + (currentPlayer===rules.PLAYER2? "You" : "Computer"));
+        utils.openModal(
+            "Victory: " + (currentPlayer === rules.PLAYER2 ? "You" : "Computer")
+        );
     } else {
         // Game continues
         if (currentPlayer === rules.PLAYER1) {
@@ -57,14 +58,15 @@ export default function Connect4({ m, n }) {
             backdrop.style.display = "block";
         }
 
-        // setTimeout(() => {
-        //     let column = rules.get_ai_move(currentBoard, currentPlayer);
-        //     place_token_and_end_turn(column);
-        // }, 1000);
-
-
-        let column = rules.get_monte_carlo_move_for_p1(currentBoard, currentPlayer, otherPlayer);
-        place_token_and_end_turn(column);
+        setTimeout(() => {
+            // let column = rules.get_ai_move(currentBoard, currentPlayer, otherPlayer);
+            let column = rules.get_monte_carlo_move_for_p1(
+                currentBoard,
+                currentPlayer,
+                otherPlayer
+            );
+            place_token_and_end_turn(column);
+        }, 1000);
     }
 
     function get_other_player() {

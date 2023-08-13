@@ -50,22 +50,25 @@ export function check_winner(board) {
     return true;
 }
 
-export function get_ai_move(board, ai_symbol) {
-    let newBoard = board.map(function (arr) {
-        return arr.slice();
-    });
+export function get_ai_move(currentBoard, p1, p2) {
+    let newBoard = copy_board(currentBoard);
     let placed = false;
     let column = 0;
     while (!placed) {
         column = Math.floor(Math.random() * 7);
-        placed = place_token(column, newBoard, ai_symbol);
+        placed = place_token(column, newBoard, p1);
     }
     return column;
 }
 
-export function get_monte_carlo_move_for_p1(board, p1, p2) {
-    let simulation_counts = 100;
-    let probabilities = play_n_games_per_column(simulation_counts, copy_board(board), p1, p2);
+export function get_monte_carlo_move_for_p1(currentBoard, p1, p2) {
+    let simulation_counts = 1000;
+    let probabilities = play_n_games_per_column(
+        simulation_counts,
+        copy_board(currentBoard),
+        p1,
+        p2
+    );
     console.log(probabilities);
     let column_pick = probabilities.indexOf(Math.max(...probabilities));
     return column_pick;
@@ -187,10 +190,10 @@ function play_p1_to_finish(currentBoard, p1_pick, p1, p2) {
     if (player_turn === p1) {
         return true;
     }
-    return false;;
+    return false;
 }
 
-function copy_board(current_board) { 
+function copy_board(current_board) {
     let newBoard = current_board.map(function (arr) {
         return arr.slice();
     });
