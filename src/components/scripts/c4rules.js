@@ -2,6 +2,9 @@
 // Interface
 // *****************
 let BLANK = "";
+export const PLAYER1 = "R";
+export const PLAYER2 = "G";
+
 export function create_board(m, n) {
     let empty_board = Array.from(Array(m), () => new Array(n).fill(BLANK));
     return empty_board;
@@ -24,6 +27,7 @@ export function check_winner(board) {
     let [m, n] = [board.length, board[0].length];
     let hasWinner = false;
     let symbol = BLANK;
+    let hasBlank = false;
     for (let r = 0; r < m; r++) {
         for (let c = 0; c < n; c++) {
             symbol = board[r][c];
@@ -32,13 +36,21 @@ export function check_winner(board) {
                 if (hasWinner) {
                     return true;
                 }
+            } else {
+                hasBlank = true;
             }
         }
     }
-    return false;
+
+    // Can get here when board is fully empty. No winner.
+    if (hasBlank) {
+        return false;
+    }
+    // When board is full without winner, consider this draw as a win to trigger game conclusion.
+    return true;
 }
 
-export function get_ai_move(board, symbol) {
+export function get_ai_move(board, ai_symbol) {
     let newBoard = board.map(function (arr) {
         return arr.slice();
     });
@@ -46,9 +58,17 @@ export function get_ai_move(board, symbol) {
     let column = 0;
     while (!placed) {
         column = Math.floor(Math.random() * 7);
-        placed = place_token(column, newBoard, symbol);
+        placed = place_token(column, newBoard, ai_symbol);
     }
     return column;
+}
+
+export function get_monte_carlo_move_for_p1(board, p1, p2) {
+    let simulation_counts = 100;
+    let probabilities = play_n_games_per_column(simulation_counts, copy_board(board), p1, p2);
+    console.log(probabilities);
+    let column_pick = probabilities.indexOf(Math.max(...probabilities));
+    return column_pick;
 }
 
 // *****************
@@ -126,4 +146,53 @@ function scan_direction(board, r, c, l, direction, symbol) {
             return 0;
         }
     }
+}
+
+function play_n_games_per_column(n, currentBoard, p1, p2) {
+    const columns_probability = [];
+    const n_columns = currentBoard[0].length;
+    for (let col_pick = 0; col_pick < n_columns; col_pick++) {
+        let wins = 0;
+        for (let count = 0; count < n; count++) {
+            if (play_p1_to_finish(currentBoard, col_pick, p1, p2)) {
+                wins++;
+            }
+        }
+        columns_probability.push(wins / n);
+    }
+    return columns_probability;
+}
+
+function play_p1_to_finish(currentBoard, p1_pick, p1, p2) {
+    let newBoard = copy_board(currentBoard);
+    let n_columns = newBoard[0].length;
+
+    // Board can't be played - already has a winner
+    if (check_winner(newBoard)) {
+        return false;
+    }
+
+    // p1 plays the given column
+    place_token(p1_pick, newBoard, p1);
+
+    // Run the game til the end
+    let player_turn = p1;
+    let random_pick = 0;
+    while (!check_winner(newBoard)) {
+        player_turn = player_turn === p1 ? p2 : p1;
+        random_pick = Math.floor(Math.random() * (n_columns + 1));
+        place_token(random_pick, newBoard, player_turn);
+    }
+
+    if (player_turn === p1) {
+        return true;
+    }
+    return false;;
+}
+
+function copy_board(current_board) { 
+    let newBoard = current_board.map(function (arr) {
+        return arr.slice();
+    });
+    return newBoard;
 }

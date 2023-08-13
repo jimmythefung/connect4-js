@@ -4,22 +4,20 @@ import { useEffect, useState } from "react";
 import * as utils from "../../scripts/utils.js";
 import * as rules from "../../scripts/c4rules.js";
 
-let PLAYER1 = "User";
-let PLAYER2 = "AI";
 
 export default function Connect4({ m, n }) {
     const [currentBoard, setCurrentBoard] = useState(rules.create_board(m, n));
     const [col_select, setColSelect] = useState(0);
-    const [currentPlayer, setCurrentPlayer] = useState(PLAYER1);
+    const [currentPlayer, setCurrentPlayer] = useState(rules.PLAYER1);
     let otherPlayer = get_other_player();
     let isGameOver = rules.check_winner(currentBoard);
 
     // Check winner
     if (isGameOver) {
-        utils.openModal("Victory: "+otherPlayer);
+        utils.openModal("Victory: " + (currentPlayer===rules.PLAYER2? "You" : "Computer"));
     } else {
         // Game continues
-        if (currentPlayer === PLAYER1) {
+        if (currentPlayer === rules.PLAYER1) {
             handle_p1();
         } else {
             handle_ai();
@@ -58,14 +56,19 @@ export default function Connect4({ m, n }) {
             var backdrop = document.querySelector(".backdrop");
             backdrop.style.display = "block";
         }
-        setTimeout(() => {
-            let column = rules.get_ai_move(currentBoard, currentPlayer);
-            place_token_and_end_turn(column);
-        }, 1000);
+
+        // setTimeout(() => {
+        //     let column = rules.get_ai_move(currentBoard, currentPlayer);
+        //     place_token_and_end_turn(column);
+        // }, 1000);
+
+
+        let column = rules.get_monte_carlo_move_for_p1(currentBoard, currentPlayer, otherPlayer);
+        place_token_and_end_turn(column);
     }
 
     function get_other_player() {
-        return currentPlayer === PLAYER1 ? PLAYER2 : PLAYER1;
+        return currentPlayer === rules.PLAYER1 ? rules.PLAYER2 : rules.PLAYER1;
     }
 
     return (
@@ -159,8 +162,8 @@ function Cell({ text, row, col, clickHandler }) {
         <div
             className={`
                 ${styles.cell} 
-                ${text === PLAYER1 ? styles.player1 : ""}
-                ${text === PLAYER2 ? styles.player2 : ""}
+                ${text === rules.PLAYER1 ? styles.player1 : ""}
+                ${text === rules.PLAYER2 ? styles.player2 : ""}
             `}
             onClick={() => clickHandler(row, col)}
         ></div>
